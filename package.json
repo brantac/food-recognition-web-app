@@ -1,0 +1,23 @@
+{
+  "name": "fra_web_app",
+  "version": "0.0.1",
+  "description": "Food Recognition Web Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tensorflow",
+    "machine",
+    "learning",
+    "web",
+    "application",
+    "food",
+    "recognition"
+  ],
+  "author": "Arthur Brant",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
