@@ -1,4 +1,4 @@
-# Food Recognition Web Aplication (FRW)
+# Food Recognition Web Application (FRW)
 ## Welcome to a university final project
 
 This project is a web application that runs in the browser. It is able to recognise food pictures taken by the user and register the calories to your profile.
