@@ -1,5 +1,9 @@
 function getHomePage (req, res) {
-    res.render('home');
+    let data = {
+        page: 'home'
+    };
+
+    res.render('index', data);
 }
 
 module.exports = {
