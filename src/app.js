@@ -8,6 +8,8 @@ const home = require('./routes/home');
 const login = require('./routes/login');
 
 // Set ups
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // Config
 // app.use(compression());
