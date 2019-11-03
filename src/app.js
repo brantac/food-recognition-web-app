@@ -5,6 +5,7 @@ const port = process.env.PORT || 3000;
 
 // Get the routes
 const home = require('./routes/home');
+const login = require('./routes/login');
 
 // Set ups
 
@@ -16,9 +17,10 @@ app.set('views', path.join(__dirname, './views'));
 // Use the routes
 app.use('/', home);
 // }); Criar rota de login
+app.use('/login', login);
 
 // Define the port that the server will listen
-app.listen('3000', function () {
+app.listen(port, function () {
     console.log(`Model server running on http://localhost:${port}`);
 });
 
