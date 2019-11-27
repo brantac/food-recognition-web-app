@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 // Get the routes
 const home = require('./routes/home');
 const login = require('./routes/login');
+const meal = require('./routes/meal');
 
 // Set ups
 app.use(express.json());
@@ -20,6 +21,8 @@ app.set('views', path.join(__dirname, './views'));
 app.use('/', home);
 // }); Criar rota de login
 app.use('/login', login);
+// 
+app.use('/meal', meal);
 
 // Define the port that the server will listen
 app.listen(port, function () {

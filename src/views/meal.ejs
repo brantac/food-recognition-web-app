@@ -1,0 +1,47 @@
+<div class="meal">
+    <h1 id="meal-date">-</h1>
+    <ul class="foods">
+        <li class="food-item"><span class="delete-food-button">X</span></li>
+    </ul>
+</div>
+<script>
+class Meal {
+    constructor(mealObj) {
+        this.myMeal;
+    }
+
+    async getMeal() {
+        try {
+            const response = await fetch('/getMeal');
+            const resJson = await response.json();
+            console.log(resJson);
+            this.myMeal = resJson;
+            return resJson;
+        } catch (error) {
+            throw new Error('We had a problem retrieving your meal from the server.');
+        }
+    }
+
+    addFood(food) {
+        return;
+    }
+
+    getMealDate() {
+        const dateHeader = document.querySelector('#meal-date');
+        dateHeader.innerHTML = this.mealDate;
+        return;
+    }
+}
+</script>
+<script>
+navigator.mediaDevices.getUserMedia({
+    audio: false,
+    video: {
+        width: 1280,
+        height: 720,
+        facingMode: {
+            exact: "environment"
+        }
+    }
+})
+</script>
