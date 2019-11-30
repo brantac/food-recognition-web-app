@@ -1,5 +1,13 @@
 const mealModel = require('../models/mealModel');
 
+function getNewMealPage(req, res) {
+    const data = {
+        page: 'newMeal'
+    };
+
+    res.render('index', data);
+}
+
 function getMealsPage(req, res) {
     const data = {
         page: 'meal'
@@ -14,6 +22,7 @@ function getMealsList(req, res) {
 }
 
 module.exports = {
+    getNewMealPage,
     getMealsPage,
     getMealsList
 };

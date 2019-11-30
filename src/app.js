@@ -8,6 +8,8 @@ const home = require('./routes/home');
 const login = require('./routes/login');
 const meal = require('./routes/meal');
 
+app.use(express.static(path.join(__dirname,'./assets')));
+
 // Set ups
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

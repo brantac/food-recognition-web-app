@@ -1,0 +1,21 @@
+*, html {
+    box-sizing: border-box;
+}
+
+html, body {
+    border: 0;
+    width: 100%;
+}
+
+#meal {
+    width: 100%;
+}
+
+#img-container {
+    width: 100%;
+}
+
+#foodImage {
+    max-width: 100%;
+    height: auto;
+}

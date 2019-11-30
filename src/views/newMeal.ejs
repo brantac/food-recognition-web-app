@@ -1,0 +1,129 @@
+<div class="meal">
+    <h3>Nova refeição</h3>
+    <input id="input-img" type="file" accept="image/*" capture="environment">
+    <div class="img-container">
+        <img id="foodImage" src="" alt="">
+    </div>
+    <h1 id="meal-date">-</h1>
+    <ul class="foods">
+        <li class="food-item"><span class="delete-food-button">X</span></li>
+    </ul>
+</div>
+<button id="cancel-meal-button">Cancelar</button>
+<button id="save-meal-button">Salvar</button>
+
+<!-- Load Tensorflow and Teachable Machine models -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script>
+const modelURL = '/ml_models/tm-my-image-model/';
+let model, maxPredictions;
+
+async function init() {
+    const jsonModelURL = modelURL + 'model.json';
+    const metadataURL = modelURL + 'metadata.json';
+
+    model = await tmImage.load(jsonModelURL, metadataURL);
+    console.log(model);
+    console.log("Model loaded.");
+    maxPredictions = model.getTotalClasses();
+}
+init();
+
+
+async function uploadImage() {
+    let uploadedFile = document.getElementById("input-img").files[0];
+    let imgContainer = document.getElementById('foodImage');
+    console.log(imgContainer);
+    console.log(uploadedFile);
+    imgContainer.src = URL.createObjectURL(uploadedFile);
+}
+
+async function predict() {
+    let response = await model.predict(document.getElementById('foodImage'));
+    console.log(response);
+}
+
+
+async function getModel() {
+    return await model.predict(document.getElementById('foodImage'));
+}
+
+const imgTag = document.getElementById('foodImage');
+imgTag.addEventListener('load', e =>{
+    predict();
+}, false);
+
+const fileInput = document.getElementById("input-img");
+fileInput.addEventListener('change', e => {
+    uploadImage();
+}, false);
+</script>
+<script>
+
+class Meal {
+    constructor(mealObj) {
+        this.myMeal = {
+            userId: '',
+            meal: {
+                mealId: '',
+                dateTime: '',
+                mealName: '',
+                totalKcal: 0
+            },
+            food: [
+                {
+                    foodId: '',
+                    foodName: '',
+                    kcal: ''
+                }
+            ]
+        };
+    }
+
+    createMeal() {
+        this.myMeal.meal.dateTime = new Date();
+    }
+
+    editMealName(mealName) {
+        this.myMeal.meal.mealName = mealName;
+    }
+
+    async getMeal() {
+        try {
+            const response = await fetch('/getMeal');
+            const resJson = await response.json();
+            console.log(resJson);
+            this.myMeal = resJson;
+            return resJson;
+        } catch (error) {
+            throw new Error('We had a problem retrieving your meal from the server.');
+        }
+    }
+
+    addFood(food) {
+        this.myMeal.food.push({
+            foodId: food.foodId,
+            foodName: food.foodName,
+            kcal: food.kcal
+        });
+
+        return;
+    }
+
+    getMealDate() {
+        const dateHeader = document.querySelector('#meal-date');
+        dateHeader.innerHTML = this.mealDate;
+        return;
+    }
+
+    insertData(element, data) {
+        element.innerHTML = data;
+        return;
+    }
+
+}
+
+let myNewMeal = new Meal();
+myNewMeal.createMeal();
+</script>
