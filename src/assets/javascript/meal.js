@@ -26,18 +26,6 @@ class Meal {
     //     this.myMeal.meal.mealName = mealName;
     // }
 
-    // async getMeal() {
-    //     try {
-    //         const response = await fetch('/getMeal');
-    //         const resJson = await response.json();
-    //         console.log(resJson);
-    //         this.myMeal = resJson;
-    //         return resJson;
-    //     } catch (error) {
-    //         throw new Error('We had a problem retrieving your meal from the server.');
-    //     }
-    // }
-
     mealSucessMessage() {
         console.log("Objeto refeição criado com sucesso!");
     }
@@ -84,7 +72,6 @@ class Meal {
         let highestProb = -1;
         let highestPrediction;
         predictions.forEach((prediction, index) => {
-            console.log(`Prediction ${index}: ${prediction.probability}`);
             prob = prediction.probability;
             if (prob > highestProb) {
                 highestProb = prob;
