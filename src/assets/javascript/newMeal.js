@@ -67,6 +67,7 @@ imgTag.addEventListener('load', async e =>{
     let predictedFood = {};
     const response = await predict();
     predictedFood = myNewMeal.getFoodWithHighestProbability(response);
+    let foodComp = await myNewMeal.getFoodComposition(`/meal/get-food-composition?className=${predictedFood.className}`);
     insertFoodItem(predictedFood);
 }, false);
 
@@ -74,3 +75,6 @@ const fileInput = document.getElementById("input-img");
 fileInput.addEventListener('change', e => {
     uploadImage();
 }, false);
+
+let myNewMeal = new Meal();
+myNewMeal.mealSucessMessage();
