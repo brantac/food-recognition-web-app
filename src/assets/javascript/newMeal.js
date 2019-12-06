@@ -22,10 +22,11 @@ async function predict() {
     return response;
 }
 
-function insertFoodItem(pf) {
+function insertFoodItem(food) {
     // Se há alimento identificado pelo modelo,
     // inserir o nome numa lista
-    if (Object.keys(pf).length > 0) {
+    if (food.length > 0) {
+        let pf = food[0];
         let ul = document.getElementsByClassName('foods-container')[0];
         let foodName = document.createElement('span');
         let kcal = document.createElement('span');
@@ -33,20 +34,30 @@ function insertFoodItem(pf) {
         let carbohydrate = document.createElement('span');
         let fiber = document.createElement('span');
         let li = document.createElement('li');
-        let deleteTextNode = document.createTextNode('Apagar');
         let deleteButton = document.createElement('span');
-        let editTextNode = document.createTextNode('Editar');
         let editButton = document.createElement('span');
-        let predictionTextNode = document.createTextNode(pf.className);
+        // Criar nós de texto
+        let kcalText = document.createTextNode(pf.kcal);
+        let proteinText = document.createTextNode(pf.protein);
+        let carbohydrateText = document.createTextNode(pf.carbohydrate);
+        let fiberText = document.createTextNode(pf.fiber);
+        let deleteTextNode = document.createTextNode('Apagar');
+        let editTextNode = document.createTextNode('Editar');
+        let predictionTextNode = document.createTextNode(pf.food_name);
 
-        editButton.append(editTextNode);
+        // Inserir dados do alimento
         foodName.classList = "food-name";
+        li.classList = "food-item";
+        editButton.append(editTextNode);
         editButton.classList = "edit-food-button";
         deleteButton.classList = "del-food-button";
-        li.classList = "food-item";
+        kcal.append(kcalText);
+        protein.append(proteinText);
+        carbohydrate.append(carbohydrateText);
+        fiber.append(fiberText);
         deleteButton.append(deleteTextNode);
         foodName.append(predictionTextNode);
-
+        // Inserir tags
         li.appendChild(foodName);
         li.appendChild(kcal);
         li.appendChild(protein);
@@ -54,8 +65,8 @@ function insertFoodItem(pf) {
         li.appendChild(fiber);
         li.appendChild(deleteButton);
         li.appendChild(editButton);
-        console.log(li);
         ul.appendChild(li);
+        console.log(li);
     }
 }
 
@@ -68,7 +79,8 @@ imgTag.addEventListener('load', async e =>{
     const response = await predict();
     predictedFood = myNewMeal.getFoodWithHighestProbability(response);
     let foodComp = await myNewMeal.getFoodComposition(`/meal/get-food-composition?className=${predictedFood.className}`);
-    insertFoodItem(predictedFood);
+    // insertFoodItem(predictedFood);
+    insertFoodItem(foodComp);
 }, false);
 
 const fileInput = document.getElementById("input-img");
