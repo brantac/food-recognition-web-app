@@ -1,9 +1,13 @@
-const modelURL = '/ml_models/tm-my-image-model/';
+// const modelURL = '/ml_models/tm-my-image-model/';
+const modelURL = '/ml_models/image-model-two/';
 let model, maxPredictions;
 
 async function init() {
     const jsonModelURL = modelURL + 'model.json';
     const metadataURL = modelURL + 'metadata.json';
+
+    // Instanciação do objeto refeição
+    // document.querySelector('#meal-date').innerHTML = myNewMeal.myMeal.meal.dateTime;
 
     model = await tmImage.load(jsonModelURL, metadataURL);
     console.log("Model loaded.");
@@ -79,13 +83,20 @@ imgTag.addEventListener('load', async e =>{
     const response = await predict();
     predictedFood = myNewMeal.getFoodWithHighestProbability(response);
     let foodComp = await myNewMeal.getFoodComposition(`/meal/get-food-composition?className=${predictedFood.className}`);
-    // insertFoodItem(predictedFood);
+    myNewMeal.addFood(foodComp[0]);
     insertFoodItem(foodComp);
 }, false);
 
-const fileInput = document.getElementById("input-img");
-fileInput.addEventListener('change', e => {
+document.getElementById("input-img")
+.addEventListener('change', e => {
     uploadImage();
+}, false);
+
+document.getElementById('save-meal-button')
+.addEventListener('click', async e => {
+    e.preventDefault();
+    let response = await myNewMeal.saveFood('/meal/save');
+    console.log(response);
 }, false);
 
 let myNewMeal = new Meal();

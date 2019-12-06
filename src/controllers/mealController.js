@@ -28,9 +28,22 @@ async function getFoodComposition(req, res) {
     res.json(foodComposition);
 }
 
+async function saveNewMeal(req,res) {
+    // let response = await database.insertMeal(data);
+    // res.render('profile');
+    try {
+        console.log(await req.body.json());
+    } catch (error) {
+        throw new Error("Erro: ", error);
+    }
+
+    res.json({"message": "OK"});
+}
+
 module.exports = {
     getNewMealPage,
     getMealsPage,
     getMealsList,
-    getFoodComposition
+    getFoodComposition,
+    saveNewMeal
 };

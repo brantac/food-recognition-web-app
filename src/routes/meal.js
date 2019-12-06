@@ -14,6 +14,9 @@ router.get('/newMeal', meal_controller.getNewMealPage);
 // GET meal page
 router.get('/:userId', meal_controller.getMealsPage);
 
+// POST request to save a meal
+router.post('/save', meal_controller.saveNewMeal);
+
 // GET request to edit a meal
 // router.get('/:mealId/edit', meal_controller.getEditMealPage);
 

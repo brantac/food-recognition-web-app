@@ -4,22 +4,16 @@ class Meal {
             userId: null,
             meal: {
                 mealId: null,
-                dateTime: '',
+                dateTime: new Date().toUTCString(),
                 mealName: '',
                 totalKcal: 0
             },
-            food: [
-                {
-                    foodId: '',
-                    foodName: '',
-                    kcal: ''
-                }
-            ]
+            "food": []
         };
     }
 
     createMeal() {
-        this.myMeal.meal.dateTime = new Date();
+        return;
     }
 
     // editMealName(mealName) {
@@ -31,17 +25,8 @@ class Meal {
     }
 
     addFood(food) {
-        let predictedFood = this.getFoodWithHighestProbability(food);
-
-        // Get food info in the food table
-        // let foodInfo = await getFoodComposition('/get-food-info', predictedFood.className,);
-
         // Add food to the meal
-        this.myMeal.food.push({
-            foodId: food.foodId,
-            foodName: food.foodName,
-            kcal: food.kcal
-        });
+        this.myMeal.food.push(food);
 
         return;
     }
@@ -76,6 +61,18 @@ class Meal {
             };
         });
         return highestPrediction;
+    }
+
+    async saveFood(url) {
+
+        let options = {
+            method: "POST",
+            cache: "no-cache",
+            body: JSON.stringify(this.myMeal)
+        };
+        const response = await fetch(url, options);
+        console.log(response);
+        return;
     }
 
 }
