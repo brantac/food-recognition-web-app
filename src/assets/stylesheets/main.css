@@ -54,20 +54,69 @@ main {
     text-align: center;
 }
 
+#table-container {
+    overflow: auto;
+}
+
+#meal-table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #meal-table td {
     text-align: center;
+}
+
+#meal-table th {
+    vertical-align: top;
 }
 
 .del-food-button {
     margin-right: 5px;
 }
 
-#img-container {
-    width: 100%;
+/* Images */
+#video-container {
+    margin-bottom: 16px;
 }
 
-#foodImage {
+#file-input-container {
+    margin-bottom: 16px;
+}
+
+#file-input-container input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-container {
+    width: 100%;
+    text-align: center;
+}
+
+#foodImage, #player {
     max-width: 100%;
     height: auto;
 }
 
+#player {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+}
+
+#capture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lg-btn{
+    padding: 8px;
+}
+
+#canvas {
+    display: none;
+}
