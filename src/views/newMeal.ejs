@@ -1,23 +1,33 @@
 <main id="main-new-meal">
     <h3>Nova refeição</h3>
-    <input id="input-img" type="file" accept="image/*" capture="environment">
+    <div id="video-container">
+        <video id="player" controls autoplay></video>
+        <button class="lg-btn" id="capture">Reconhecer alimento</button>
+    </div>
+    <div id="file-input-container">
+        <input id="input-img" type="file" accept="image/*" capture="environment">
+    </div>
     <div class="img-container">
+        <canvas id="canvas" width=320 height=240></canvas>
         <img id="foodImage" src="" alt="">
     </div>
     <h1 id="meal-date">-</h1>
     <!-- Tabela de alimentos -->
-    <table id="meal-table">
-        <tr>
-            <th>Comida</th>
-            <th>Energia (kcal)</th>
-            <th>Proteina (g)</th>
-            <th>Carboidrato (g)</th>
-            <th>Fibra (g)</th>
-        </tr>
-    </table>
-    
-    <button id="cancel-meal-button">Cancelar</button>
-    <button id="save-meal-button">Salvar</button>
+    <div id="table-container">
+        <table id="meal-table">
+            <tr>
+                <th>Comida</th>
+                <th>Energia (kcal)</th>
+                <th>Proteina (g)</th>
+                <th>Carboidrato (g)</th>
+                <th>Fibra (g)</th>
+            </tr>
+        </table>
+    </div>
+    <div id="new-meal-buttons">
+        <button class="lg-btn" id="cancel-meal-button">Cancelar</button>
+        <button class="lg-btn" id="save-meal-button">Salvar</button>
+    </div>
 </main>
 
 <!-- Load Tensorflow and Teachable Machine models -->
@@ -25,3 +35,4 @@
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 <script src="/javascript/meal.js"></script>
 <script src="/javascript/newMeal.js"></script>
+<script src="/javascript/camera.js"></script>
