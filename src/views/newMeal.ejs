@@ -1,13 +1,20 @@
 <main id="main-new-meal">
-    <div class="">
-        <h3>Nova refeição</h3>
-        <input id="input-img" type="file" accept="image/*" capture="environment">
-        <div class="img-container">
-            <img id="foodImage" src="" alt="">
-        </div>
-        <h1 id="meal-date">-</h1>
-        <ul class="foods-container"></ul>
+    <h3>Nova refeição</h3>
+    <input id="input-img" type="file" accept="image/*" capture="environment">
+    <div class="img-container">
+        <img id="foodImage" src="" alt="">
     </div>
+    <h1 id="meal-date">-</h1>
+    <!-- Tabela de alimentos -->
+    <table id="meal-table">
+        <tr>
+            <th>Comida</th>
+            <th>Energia (kcal)</th>
+            <th>Proteina (g)</th>
+            <th>Carboidrato (g)</th>
+            <th>Fibra (g)</th>
+        </tr>
+    </table>
     
     <button id="cancel-meal-button">Cancelar</button>
     <button id="save-meal-button">Salvar</button>

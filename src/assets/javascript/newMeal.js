@@ -30,47 +30,57 @@ function insertFoodItem(food) {
     // Se há alimento identificado pelo modelo,
     // inserir o nome numa lista
     if (food.length > 0) {
+        // Get the first food in the list of foods
+        // returned.
         let pf = food[0];
-        let ul = document.getElementsByClassName('foods-container')[0];
-        let foodName = document.createElement('span');
-        let kcal = document.createElement('span');
-        let protein = document.createElement('span');
-        let carbohydrate = document.createElement('span');
-        let fiber = document.createElement('span');
-        let li = document.createElement('li');
-        let deleteButton = document.createElement('span');
-        let editButton = document.createElement('span');
-        // Criar nós de texto
+
+        // Get the table element
+        let table = document.getElementById('meal-table');
+
+        // Create a table row and then table data tags
+        // for each food info
+        let tablerow = document.createElement('tr');
+        let foodName = document.createElement('td');
+        let kcal = document.createElement('td');
+        let protein = document.createElement('td');
+        let carbohydrate = document.createElement('td');
+        let fiber = document.createElement('td');
+
+        // Create 'delete' and 'edit' food buttons
+        let deleteButton = document.createElement('button');
+        let editButton = document.createElement('button');
+
+        // Create text nodes with each info of the food
+        let foodNameTextNode = document.createTextNode(pf.food_name);
         let kcalText = document.createTextNode(pf.kcal);
         let proteinText = document.createTextNode(pf.protein);
         let carbohydrateText = document.createTextNode(pf.carbohydrate);
         let fiberText = document.createTextNode(pf.fiber);
-        let deleteTextNode = document.createTextNode('Apagar');
-        let editTextNode = document.createTextNode('Editar');
-        let predictionTextNode = document.createTextNode(pf.food_name);
+        let editButtonText = document.createTextNode('Editar');
+        let deleteButtonText = document.createTextNode('X');
 
-        // Inserir dados do alimento
-        foodName.classList = "food-name";
-        li.classList = "food-item";
-        editButton.append(editTextNode);
-        editButton.classList = "edit-food-button";
-        deleteButton.classList = "del-food-button";
+        // Insert food info text nodes into their own 'td' tags
         kcal.append(kcalText);
         protein.append(proteinText);
         carbohydrate.append(carbohydrateText);
         fiber.append(fiberText);
-        deleteButton.append(deleteTextNode);
-        foodName.append(predictionTextNode);
+        foodName.append(foodNameTextNode);
+
+        // Insert text node into delete and edit buttons
+        editButton.append(editButtonText);
+        deleteButton.append(deleteButtonText);
+        editButton.classList = "edit-food-button";
+        deleteButton.classList = "del-food-button";
+
         // Inserir tags
-        li.appendChild(foodName);
-        li.appendChild(kcal);
-        li.appendChild(protein);
-        li.appendChild(carbohydrate);
-        li.appendChild(fiber);
-        li.appendChild(deleteButton);
-        li.appendChild(editButton);
-        ul.appendChild(li);
-        console.log(li);
+        tablerow.appendChild(foodName);
+        tablerow.appendChild(kcal);
+        tablerow.appendChild(protein);
+        tablerow.appendChild(carbohydrate);
+        tablerow.appendChild(fiber);
+        tablerow.appendChild(deleteButton);
+        tablerow.appendChild(editButton);
+        table.appendChild(tablerow);
     }
 }
 

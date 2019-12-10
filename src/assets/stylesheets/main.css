@@ -45,8 +45,21 @@ main {
     cursor: pointer;
 }
 
+/* Meal component */
 #meal {
     width: 100%;
+}
+
+#meal-date {
+    text-align: center;
+}
+
+#meal-table td {
+    text-align: center;
+}
+
+.del-food-button {
+    margin-right: 5px;
 }
 
 #img-container {
@@ -58,7 +71,3 @@ main {
     height: auto;
 }
 
-ul.foods-container {
-    list-style: none;
-    padding: 0;
-}
