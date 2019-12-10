@@ -1,8 +1,9 @@
 <main id="main-new-meal">
     <h3>Nova refeição</h3>
     <div id="video-container">
-        <video id="player" controls autoplay></video>
+        <video id="player" controls autoplay>Problema ao rodar o video</video>
         <button class="lg-btn" id="capture">Reconhecer alimento</button>
+        <button class="lg-btn" id="turnoff-camera-button">Desligar a câmera</button>
     </div>
     <div id="file-input-container">
         <input id="input-img" type="file" accept="image/*" capture="environment">
@@ -15,13 +16,16 @@
     <!-- Tabela de alimentos -->
     <div id="table-container">
         <table id="meal-table">
-            <tr>
-                <th>Comida</th>
-                <th>Energia (kcal)</th>
-                <th>Proteina (g)</th>
-                <th>Carboidrato (g)</th>
-                <th>Fibra (g)</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Comida</th>
+                    <th>Energia (kcal)</th>
+                    <th>Proteina (g)</th>
+                    <th>Carboidrato (g)</th>
+                    <th>Fibra (g)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
         </table>
     </div>
     <div id="new-meal-buttons">

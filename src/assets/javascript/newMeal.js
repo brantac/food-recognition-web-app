@@ -35,7 +35,7 @@ function insertFoodItem(food) {
         let pf = food[0];
 
         // Get the table element
-        let table = document.getElementById('meal-table');
+        let tableBody = document.querySelector('tbody');
 
         // Create a table row and then table data tags
         // for each food info
@@ -80,7 +80,7 @@ function insertFoodItem(food) {
         tablerow.appendChild(fiber);
         tablerow.appendChild(deleteButton);
         tablerow.appendChild(editButton);
-        table.appendChild(tablerow);
+        tableBody.appendChild(tablerow);
     }
 }
 

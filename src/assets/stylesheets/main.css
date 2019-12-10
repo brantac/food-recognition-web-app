@@ -56,6 +56,7 @@ main {
 
 #table-container {
     overflow: auto;
+    margin-bottom: 16px;
 }
 
 #meal-table {
@@ -71,8 +72,17 @@ main {
     vertical-align: top;
 }
 
+#meal-table tbody tr:nth-child(2n) {
+    background-color: gray;
+}
+
 .del-food-button {
     margin-right: 5px;
+}
+
+#new-meal-buttons {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Images */
@@ -107,10 +117,14 @@ main {
     margin-bottom: 16px;
 }
 
-#capture {
+#capture, #turnoff-camera-button {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#capture {
+    margin-bottom: 16px;
 }
 
 .lg-btn{
